@@ -1,13 +1,13 @@
 /* [ -- Master Stylesheet -- ]
 
 /* :: Import Fonts */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+/* @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"); */
 @import url(css/bootstrap.min.css);
 @import url(css/classy-nav.css);
 @import url(css/animate.css);
 @import url(css/owl.carousel.css);
 @import url(css/font-awesome.min.css);
-@font-face {
+/* @font-face {
   font-family: 'helveticaneuebold';
   src: url("/assets/common/fonts/helvetica_neu_bold-webfont.woff2") format("woff2"), url("/assets/common/fonts/helvetica_neu_bold-webfont.woff") format("woff");
   font-weight: normal;
@@ -16,7 +16,7 @@
   font-family: 'helveticaneuemedium';
   src: url("/assets/common/fonts/helveticaneue_medium-webfont.woff2") format("woff2"), url("/assets/common/fonts/helveticaneue_medium-webfont.woff") format("woff");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal; } */
 /* :: Import All CSS */
 /* :: Base CSS */
 * {
