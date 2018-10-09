@@ -11,7 +11,14 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: '/index',
+          name: 'index',
+          component: () => import('./views/Index.vue')
+        }
+      ]
     },
     {
       path: '/admin',
