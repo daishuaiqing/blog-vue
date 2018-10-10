@@ -17,6 +17,11 @@ export default new Router({
           path: '/index',
           name: 'index',
           component: () => import('./views/Index.vue')
+        },
+        {
+          path: '/article',
+          name: 'articleView',
+          component: () => import('./views/ArticleView.vue')
         }
       ]
     },
