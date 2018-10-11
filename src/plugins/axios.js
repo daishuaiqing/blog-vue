@@ -12,6 +12,9 @@ let config = {
    baseURL: process.env.baseURL || process.env.apiUrl || "http://localhost:8888",
    timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
+   headers: {
+     token:window.localStorage.getItem('token')
+   }
 };
 
 const _axios = axios.create(config);

@@ -66,8 +66,24 @@
                         this.$router.push({ name: "setting" })
                         break;
                 }
+            },
+            checkToken(){
+                if(window.localStorage.getItem('token')==null){
+                    this.$router.push({ name: "login" });
+                }else{
+                    this.$axios.get('/get/token?token='+window.localStorage.getItem('token'),{})
+                    .then(res => {
+                        if(res.data==null){
+                            window.localStorage.removeItem('token');
+                            this.$router.push({ name: "login" });
+                        }
+                    });
+                }
             }
-        }
+        },
+        created() {
+            this.checkToken();
+        },
     }
 </script>
 
