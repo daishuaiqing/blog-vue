@@ -21,10 +21,10 @@
                 <el-table-column
                 fixed="right"
                 label="操作"
-                width="100">
+                width="200">
                 <template slot-scope="scope">
-                    <!-- <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button> -->
-                    <el-button type="text" @click="toEdit(scope.row.id)" size="small">编辑</el-button>
+                    <el-button type="primary" @click="toEdit(scope.row.id)" icon="el-icon-edit" circle></el-button>
+                    <el-button type="danger" icon="el-icon-delete" circle></el-button>
                 </template>
                 </el-table-column>
             </el-table>
