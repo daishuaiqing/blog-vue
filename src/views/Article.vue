@@ -24,7 +24,7 @@
                 width="200">
                 <template slot-scope="scope">
                     <el-button type="primary" @click="toEdit(scope.row.id)" icon="el-icon-edit" circle></el-button>
-                    <el-button type="danger" icon="el-icon-delete" circle></el-button>
+                    <el-button type="danger" @click="toDelete(scope.row.id)" icon="el-icon-delete" circle></el-button>
                 </template>
                 </el-table-column>
             </el-table>
@@ -51,6 +51,24 @@
             },
             toEdit(id){
                 this.$router.push({ name: "articleAdd" ,params: {articleId : id}});
+            },
+            toDelete(itemId){
+                this.$axios.delete('/article/delete',{params: {id:itemId}})
+                    .then(res => {
+                        if(res===true){
+                            this.$message({
+                                showClose: true,
+                                message: '删除成功',
+                                type: 'success'
+                            });
+                        }else{
+                            this.$message({
+                                showClose: true,
+                                message: '删除失败',
+                                type: 'error'
+                            });
+                        }
+                    });
             }
         },
         created(){

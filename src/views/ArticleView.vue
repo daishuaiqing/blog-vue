@@ -11,9 +11,10 @@
                                 <p>Time <a href="#">{{ article.createTime, "date" | formatUnix }}</a></p>
                                 <p>3 comments</p>
                             </div>
-                            <p v-html="article.content">
-                            </p>
-
+                            <div class="ql-container ql-snow">
+                                <div class="ql-editor" v-html="article.content">
+                                </div>
+                            </div>
                         </div>
                     </div>
     </div>

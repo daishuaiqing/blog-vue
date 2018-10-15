@@ -22,6 +22,7 @@
                         @ready="onEditorReady($event)"
                         @change="onEditorChange($event)">
             </quill-editor>
+            
             <div class="limit">当前已输入 <span>{{nowLength}}</span> 个字符，您还可以输入 <span>{{SurplusLength}}</span> 个字符。</div>
         </div>
         <div style="margin-top:20px">
@@ -41,7 +42,8 @@
                     id: null,
                     title: "",
                     typeId: null,
-                    content: ""
+                    content: "",
+                    summary:''
                 },
                 editorOption: {
                     modules: {
@@ -61,9 +63,7 @@
                         ['clean'],
                         ['link', 'image', 'video']
                         ],
-                        syntax: {
-                            highlight: text => hljs.highlightAuto(text).value
-                        }
+                        
                     }
                 }
             }
@@ -77,6 +77,8 @@
             },
             onEditorChange({ editor, html, text }) {
                 this.form.content = html;
+                console.log(html);
+                this.form.summary = text.substring(0,150);
                 this.nowLength = text.length;
                 this.SurplusLength = 10000-this.nowLength;
             },
@@ -125,7 +127,7 @@
         computed: {
             editor() {
                 return this.$refs.myTextEditor.quillEditor
-            }
+            },
         },
         mounted() {
 
@@ -133,7 +135,7 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .quill-editor {
  height: 745px;
 }
@@ -158,4 +160,5 @@
 .ql-editor .ql-video {
  max-width: 480px;
 }
+
 </style>
