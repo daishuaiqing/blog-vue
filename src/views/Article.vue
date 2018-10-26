@@ -46,7 +46,7 @@
             getList(){
                 this.$axios.get('/article/list',{})
                     .then(res => {
-                        this.listData=res;
+                        this.listData=res.content;
                     });
             },
             toEdit(id){

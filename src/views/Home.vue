@@ -20,7 +20,7 @@
 
                         <!-- Subscribe btn -->
                         <div class="subscribe-btn">
-                            <a href="#" class="btn subscribe-btn" data-toggle="modal" data-target="#subsModal">欢迎</a>
+                            <router-link :to="{name:'index'}" class="btn subscribe-btn" data-toggle="modal" data-target="#subsModal">最新</router-link>
                         </div>
 
                         <!-- Navbar Toggler -->
@@ -102,8 +102,8 @@
                                     <!-- Post Thumbnail -->
                                     <!-- Post Content -->
                                     <div class="post-content">
-                                        <a href="#" class="post-tag">Lifestyle</a>
-                                        <h4><a href="#" class="post-headline">Party people in the house</a></h4>
+                                        <!-- <a href="#" class="post-tag">Lifestyle</a> -->
+                                        <h4><a href="#" class="post-headline">博客还在开发不断完善中。。。</a></h4>
                                         <div class="post-meta">
                                             <p><a href="#">12 March</a></p>
                                         </div>
@@ -116,10 +116,11 @@
                         <div class="sidebar-widget-area">
                             <h5 class="title">分类</h5>
                             <div class="widget-content">
-                                <ul class="tags">
-                                    <li><a href="#">design</a></li>
+                                <ul class="tags" v-for="item in items" :key="item.id">
+                                    <!-- <li><a href="#">design</a></li>
                                     <li><a href="#">fashion</a></li>
-                                    <li><a href="#">travel</a></li>
+                                    <li><a href="#">travel</a></li> -->
+                                    <li><a @click="loadTypeArticle(item.id)">{{item.typeName}}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -142,10 +143,22 @@ export default {
   },
   created(){
       this.loadIndex();
+      this.getTypeList();
   },
   methods:{
       loadIndex(){
           this.$router.push({ name: "index"});
+      },
+      getTypeList(){
+            this.$axios.get('/articleType/list',{})
+                        .then(res => {
+                            this.items=res.data;
+                        });
+      },
+      loadTypeArticle(id){
+          this.$router.push({ name: "typeArticle", query: {
+              typeId: id
+          }});
       }
   }
 }

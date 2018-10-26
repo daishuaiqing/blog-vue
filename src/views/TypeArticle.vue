@@ -24,15 +24,17 @@
                     <!-- Load More -->
                     <div class="load-more-btn mt-100 wow fadeInUp" data-wow-delay="0.7s" data-wow-duration="1000ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 0.7s; animation-name: fadeInUp;">
                         <a @click="loadMore" class="btn original-btn">更多</a>
-                    </div>
-
-
-                
+                    </div>    
     </div>
 </template>
 
 <script>
     export default {
+        watch: {
+            "$route.query.typeId": function(val,  oldval) {
+                this.loadArticle();
+            }
+        },
         data(){
             return {
                 items:[],
@@ -40,7 +42,7 @@
             }
         },
         created(){
-            this.getList();
+            this.loadArticle();
         },
         methods:{
             getList(){
@@ -61,7 +63,8 @@
                 this.$axios.get('/article/list',{
                     params: {
                         page: this.currentPage+1,
-                        size: 5
+                        size: 5,
+                        typeId: this.$route.query.typeId
                     }
                 })
                 .then(res => {
@@ -74,6 +77,18 @@
                     console.log(this.items)                   
                 });
             },
+            loadArticle(){
+                 this.$axios.get('/article/list',{
+                        params: {
+                            page: this.currentPage,
+                            size: 5,
+                            typeId: this.$route.query.typeId
+                        }
+                    })
+                        .then(res => {
+                            this.items=res.content;
+                        });
+            }
         }
     }
 </script>
