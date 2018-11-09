@@ -10,3 +10,5 @@ Vue构建的博客前端项目
 [http://www.daishuaiqing.com](http://www.daishuaiqing.com)
 ## 3.接口项目地址
 [https://github.com/daishuaiqing/blog](https://github.com/daishuaiqing/blog)
+## 4.问题
+如果使用中碰到什么问题可以在微博上私信我，微博昵称：[代帅卿](https://weibo.com/u/3968629277)
